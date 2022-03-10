@@ -1,0 +1,26 @@
+MainWidget:
+
+<MainWidget>:
+    orientation: "horizontal"
+    BoxLayout:
+        orientation: "vertical"
+        Button:
+            text: "PLAY"
+            size_hint: None, None
+            width: dp(100)
+            height: dp(30)
+            pos_hint: {'center_x':0.5,'top':1}
+        Button:
+            text: "RESUME"
+            size_hint: None, None
+            width: dp(100)
+            height: dp(30)
+            pos_hint: {'center_x':0.5,'top':1}
+        Button:
+            text: "STOP"
+            size_hint: None, None
+            width: dp(100)
+            height: dp(30)
+            pos_hint: {'center_x':0.5,'top':1}
+        Label:
+            text: root.selected_song_tag
