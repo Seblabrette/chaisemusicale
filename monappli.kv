@@ -2,23 +2,48 @@ MainWidget:
 
 <MainWidget>:
     orientation: "horizontal"
+    play_button: play_button
+    resume_button: resume_button
+    stop_button: stop_button
+    plus_button: plus_button
+    minus_button: minus_button
+    BoxLayout:
+        size_hint_y: None
+        height: dp(40)
+        pos_hint: {"center_y":0.5}
+        Button:
+            id: minus_button
+            text: "-"
+            on_press: root.remove_player()
+        Label:
+            text: str(root.nb_joueurs)
+        Button:
+            id: plus_button
+            text: "+"
+            on_press: root.add_player()
     BoxLayout:
         orientation: "vertical"
         Button:
+            id: play_button
             text: "PLAY"
+            disabled: True
             on_press: root.press_play()
             size_hint: None, None
             width: dp(100)
             height: dp(30)
             pos_hint: {'center_x':0.5,'top':1}
         Button:
-            text: "PAUSE/RESUME"
-            on_press: root.press_pause_resume()
+            id: resume_button
+            disabled: True
+            text: "RESUME"
+            on_press: root.press_resume()
             size_hint: None, None
             width: dp(100)
             height: dp(30)
             pos_hint: {'center_x':0.5,'top':1}
         Button:
+            id: stop_button
+            disabled: True
             text: "STOP"
             on_press: root.press_stop()
             size_hint: None, None
@@ -27,3 +52,7 @@ MainWidget:
             pos_hint: {'center_x':0.5,'top':1}
         Label:
             text: root.selected_song_tag
+        Label:
+            text: str(filechooser.path)
+        FileChooserListView:
+            id: filechooser
