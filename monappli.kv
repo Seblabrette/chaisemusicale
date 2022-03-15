@@ -6,18 +6,21 @@ MainWidget:
         orientation: "vertical"
         Button:
             text: "PLAY"
+            on_press: root.press_play()
             size_hint: None, None
             width: dp(100)
             height: dp(30)
             pos_hint: {'center_x':0.5,'top':1}
         Button:
-            text: "RESUME"
+            text: "PAUSE/RESUME"
+            on_press: root.press_pause_resume()
             size_hint: None, None
             width: dp(100)
             height: dp(30)
             pos_hint: {'center_x':0.5,'top':1}
         Button:
             text: "STOP"
+            on_press: root.press_stop()
             size_hint: None, None
             width: dp(100)
             height: dp(30)
