@@ -27,6 +27,7 @@ class SongList1:
 
 class SoundService:
     songlist = SongList1()
+    songlist.songs = []#SongList1()
     def from_folder(self, path):
         self.songlist.songs = []
         for file in os.listdir(path):
@@ -35,10 +36,13 @@ class SoundService:
                 self.songlist.songs.append(Song(path+"/"+file,title))
 
     def get_nb_songs(self):
+        if not self.songlist.songs:
+            return 0
         return len(self.songlist.songs)
+
     def playsong(self, index, mixer):
         self.songlist.songs[index].load_song(mixer)
-        mixer.music.play()
+        mixer.music.play(-1)
     def get_song_length(self,index):
         return self.songlist.songs[index].get_song_length()
 
