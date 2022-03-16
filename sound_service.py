@@ -45,12 +45,3 @@ class SoundService:
         mixer.music.play(-1)
     def get_song_length(self,index):
         return self.songlist.songs[index].get_song_length()
-
-# mixer.init()
-# songlist = SongList1().songs
-#
-# for i in range(len(songlist)):
-#     songlist[i].load_song(mixer)
-#     print("chanson: " + songlist[i].tag)
-#     mixer.music.play()
-#     input()

@@ -59,7 +59,7 @@ class MainWidget(BoxLayout):
         self.is_paused = False
         self.soundservice = SoundService()
         self.nb_songs = self.soundservice.get_nb_songs()
-        print("nombre de chansons: " + str(self.nb_songs))
+        # print("nombre de chansons: " + str(self.nb_songs))
 
         self.box_left = BoxLayout(orientation="horizontal",
                                   size_hint_y=None,
@@ -97,11 +97,11 @@ class MainWidget(BoxLayout):
             self.file_path = selection
         # self.file_path = str(path)
         self.the_popup.dismiss()
-        print(self.file_path)
+        # print(self.file_path)
         self.update_dropdown_list(self.file_path)
 
     def update_dropdown_list(self,filepath):
-        print("update dropdown menu")
+        # print("update dropdown menu")
         self.dropdown.clear_widgets()
         self.soundservice.from_folder(filepath)
         self.nb_songs = self.soundservice.get_nb_songs()
@@ -126,7 +126,7 @@ class MainWidget(BoxLayout):
         self.selected_song_length = self.soundservice.get_song_length(self.selected_song_index)
 
     def press_play(self):
-        print("PLAY")
+        # print("PLAY")
         self.play_button.disabled = True
         self.stop_button.disabled = False
         self.plus_button.disabled = True
@@ -136,8 +136,8 @@ class MainWidget(BoxLayout):
         self.is_paused = False
         self.start_time = time.time()
         self.play_time = self.TEMPS_MIN + random.random() * (self.TEMPS_MAX-self.TEMPS_MIN)
-        print("Start time: " + str(self.start_time))
-        print("Play time: " + str(self.play_time))
+        # print("Start time: " + str(self.start_time))
+        # print("Play time: " + str(self.play_time))
         self.event = Clock.schedule_interval(self.random_stop, 1 / 30.)
 
     def press_resume(self):
@@ -146,12 +146,12 @@ class MainWidget(BoxLayout):
             self.resume_button.disabled = True
             self.start_time = time.time()
             self.play_time = self.TEMPS_MIN + random.random() * (self.TEMPS_MAX - self.TEMPS_MIN)
-            print("RESUME")
-            print("Start time: " + str(self.start_time))
-            print("Play time: " + str(self.play_time))
+            # print("RESUME")
+            # print("Start time: " + str(self.start_time))
+            # print("Play time: " + str(self.play_time))
             self.is_paused = False
-        else:
-            print("Le titre joue déjà")
+        # else:
+            # print("Le titre joue déjà")
 
     def press_stop(self):
         self.play_button.disabled = False
@@ -159,7 +159,7 @@ class MainWidget(BoxLayout):
         self.resume_button.disabled = True
         self.plus_button.disabled = False
         self.minus_button.disabled = False
-        print("STOP")
+        # print("STOP")
         if self.event is not None:
             Clock.unschedule(self.event)
         # Arrêt du son en cours de lecture
@@ -170,7 +170,7 @@ class MainWidget(BoxLayout):
         temps_ecoule = time.time() - self.start_time
         if temps_ecoule > self.play_time and not self.is_paused:
             #on est dans le cas où on met la musique en pause
-            print("temps_ecoule: "+str(temps_ecoule))
+            # print("temps_ecoule: "+str(temps_ecoule))
             self.resume_button.disabled = False
             mixer.music.pause()
             self.is_paused = True
@@ -187,7 +187,7 @@ class MainWidget(BoxLayout):
         if self.nb_joueurs < self.NB_JOUEURS_MAX:
             self.nb_joueurs += 1
 
-    print("mixer" + str(mixer.get_init()))
+    # print("mixer" + str(mixer.get_init()))
 
 
 class MonAppliApp(App):
