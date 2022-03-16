@@ -11,17 +11,27 @@ MainWidget:
         size_hint_y: None
         height: dp(10)
     BoxLayout:
-        size_hint_y: None
+        size_hint: None, None
         height: dp(40)
-        pos_hint: {"center_y":0.5}
+        width: dp(160)
+        pos_hint: {"center_x": 0.5, "top":1}
         Button:
             id: minus_button
+            size_hint: None, None
+            width: dp(40)
+            height: dp(40)
             text: "-"
             on_press: root.remove_player()
         Label:
             text: str(root.nb_joueurs)
+            size_hint: None, None
+            width: dp(80)
+            height: dp(40)
         Button:
             id: plus_button
+            size_hint: None, None
+            width: dp(40)
+            height: dp(40)
             text: "+"
             on_press: root.add_player()
     Widget:
@@ -56,9 +66,12 @@ MainWidget:
                 disabled: True
                 text: "STOP"
                 on_press: root.press_stop()
-        Label:
-            valign: "bottom"
-            text: root.selected_song_tag
+        Widget:
+            size_hint_y: None
+            height: dp(10)
+        #Label:
+        #    valign: "bottom"
+        #    text: root.selected_song_tag
 
 <FileChoosePopup>:
     title: "Choose a .CSV File"

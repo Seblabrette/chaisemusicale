@@ -1,3 +1,12 @@
+from kivy import Config
+Config.set('graphics', 'width', '600')
+Config.set('graphics', 'height', '250')
+Config.set('graphics', 'minimum_width', '500')
+Config.set('graphics', 'minimum_height', '250')
+
+# from kivy.core.window import Window
+# Window.clearcolor = (1, 1, 1, 1)
+
 import random
 from random import randint
 
@@ -56,9 +65,12 @@ class MainWidget(BoxLayout):
                                   size_hint_y=None,
                                   height=dp(40))
         self.add_widget(self.box_left)
-        self.folder_select_button = Button(text="Select Folder",
+        self.folder_select_button = Button(text="",
                                   size_hint_x=None,
                                   width=dp(150))
+        self.folder_select_button.border= (0, 0, 0, 0)
+        self.folder_select_button.background_normal = "images/button_folder_normal.png"
+        self.folder_select_button.background_down = "images/button_folder_down.png"
         self.folder_select_button.bind(on_release=self.open_popup)
         self.box_left.add_widget(self.folder_select_button)
 

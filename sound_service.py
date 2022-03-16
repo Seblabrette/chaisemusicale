@@ -32,7 +32,7 @@ class SoundService:
         self.songlist.songs = []
         for file in os.listdir(path):
             if file[-3:] == "mp3":
-                title = file[:20]
+                title = file[:]
                 self.songlist.songs.append(Song(path+"/"+file,title))
 
     def get_nb_songs(self):
